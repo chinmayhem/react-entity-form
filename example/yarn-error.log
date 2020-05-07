@@ -1,0 +1,52 @@
+Arguments: 
+  /Users/chicho17/.nvm/versions/node/v10.18.1/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js install
+
+PATH: 
+  /Users/chicho17/.npm/_npx/40302/bin:/Users/chicho17/try/node_modules/.bin:/Users/chicho17/.nvm/versions/node/v10.18.1/bin:/Users/chicho17/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/chicho17/flow/
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  10.18.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, lstat '/Users/chicho17/try/react-entity-form/node_modules/react-scripts/node_modules/@babel/plugin-syntax-object-rest-spread'
+
+npm manifest: 
+  {
+    "name": "react-entity-form-example",
+    "homepage": "https://chinmay17.github.io/react-entity-form",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+      "react": "link:../node_modules/react",
+      "react-dom": "link:../node_modules/react-dom",
+      "react-scripts": "link:../node_modules/react-scripts",
+      "react-entity-form": "link:.."
+    },
+    "scripts": {
+      "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
+      "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
+      "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
+      "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
