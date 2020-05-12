@@ -3,7 +3,17 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { Layout } from './Layout';
 import { makeMetaSelector } from './helper';
 
-const Form = ({ values, errors, fields, layouts, onAction }) => {
+import { Errors, Fields, LayoutInterface, OnActionInterface, Values } from '../builders/types';
+
+export interface FormProps {
+  values: Values;
+  errors: Errors;
+  fields: Fields;
+  layouts: LayoutInterface[];
+  onAction: OnActionInterface<any, string>;
+}
+
+const Form = ({ values, errors, fields, layouts, onAction }: FormProps) => {
   const handleSubmission = useCallback((e) => {
     e.preventDefault();
   }, []);

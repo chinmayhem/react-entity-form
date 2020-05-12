@@ -1,30 +1,20 @@
-import { ComponentType } from 'react';
 import { FieldComponentProps } from './types';
 
 function Null() {
   return null;
 }
 
-function makeIdGenerator() {
-  let id = 1;
-  return function generateId() {
-    return `field-${id++}`;
-  };
-}
-
-const idGenerator = makeIdGenerator();
-
-class FieldBuilder<V, P extends FieldComponentProps<V>> {
-  FieldComponent: ComponentType<P> = Null;
-  componentProps: Omit<P, 'value' | 'onAction'> = {} as P;
-  fieldId: string = idGenerator();
+class FieldBuilder<V, F, P extends FieldComponentProps<V, F>> {
+  FieldComponent: React.ComponentType<P> = Null;
+  componentProps: Omit<P, 'value' | 'onAction' | 'fieldId'> = {} as P;
+  fieldId: F;
   isHidden: boolean = false;
 
   constructor(field?: {
-    FieldComponent: ComponentType<P>;
-    componentProps: Omit<P, 'value' | 'onAction'>;
+    FieldComponent: React.ComponentType<P>;
+    componentProps: Omit<P, 'value' | 'onAction' | 'fieldId'>;
     isHidden: boolean;
-    fieldId: string;
+    fieldId: F;
   }) {
     if (field) {
       this.FieldComponent = field.FieldComponent;
@@ -34,19 +24,19 @@ class FieldBuilder<V, P extends FieldComponentProps<V>> {
     }
   }
 
-  setFieldComponent(Component: ComponentType<P & { value: V }>) {
+  setFieldComponent(Component: React.ComponentType<P & { value: V }>) {
     this.FieldComponent = Component;
   }
 
-  setComponentProps(componentProps: Omit<P, 'value' | 'onAction'>) {
+  setComponentProps(componentProps: Omit<P, 'value' | 'onAction' | 'fieldId'>) {
     this.componentProps = componentProps;
   }
 
   build(): {
-    FieldComponent: ComponentType<P>;
-    componentProps: Omit<P, 'value' | 'onAction'>;
+    FieldComponent: React.ComponentType<P>;
+    componentProps: Omit<P, 'value' | 'onAction' | 'fieldId'>;
     isHidden: boolean;
-    fieldId: string;
+    fieldId: F;
   } {
     return {
       FieldComponent: this.FieldComponent,

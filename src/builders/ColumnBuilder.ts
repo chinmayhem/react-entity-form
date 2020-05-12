@@ -13,7 +13,7 @@ class ColumnBuilder {
   rows: RowInterface[] = [];
   id = idGenerator();
   isHidden = false;
-  additional = undefined;
+  additional: any = undefined;
 
   constructor(column?: ColumnObjectInterface) {
     if (column) {
@@ -35,7 +35,7 @@ class ColumnBuilder {
     return this;
   }
 
-  setAdditional(additional) {
+  setAdditional(additional: any) {
     this.additional = additional;
     return this;
   }

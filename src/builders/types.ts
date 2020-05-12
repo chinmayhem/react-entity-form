@@ -25,18 +25,20 @@ export interface LayoutInterface {
   additional?: any;
 }
 
-interface PayloadInterface<V> {
+interface PayloadInterface<V, F> {
   value: V;
+  fieldId: F;
   additional?: any;
 }
 
-export interface OnActionInterface<T> {
-  ({ type, payload }: { type: typeof FORM_CHANGE_ACTION; payload: PayloadInterface<T> }): Promise<unknown>;
+export interface OnActionInterface<T, F> {
+  ({ type, payload }: { type: typeof FORM_CHANGE_ACTION; payload: PayloadInterface<T, F> }): any;
 }
 
-export interface FieldComponentProps<T> {
+export interface FieldComponentProps<T, F> {
   value: T;
-  onAction: OnActionInterface<T>;
+  fieldId: F;
+  onAction: OnActionInterface<T, F>;
 }
 
 export interface Fields {
@@ -46,4 +48,12 @@ export interface Fields {
     FieldComponent: React.ElementType;
     componentProps: object;
   };
+}
+
+export interface Values {
+  [k: string]: any;
+}
+
+export interface Errors {
+  [k: string]: any;
 }

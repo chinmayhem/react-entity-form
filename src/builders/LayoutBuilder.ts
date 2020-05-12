@@ -13,7 +13,7 @@ class LayoutBuilder {
   rows: RowInterface[] = [];
   id = idGenerator();
   isHidden = false;
-  additional = undefined;
+  additional: any = undefined;
 
   constructor(layout?: LayoutInterface) {
     if (layout) {
@@ -34,7 +34,7 @@ class LayoutBuilder {
     return this;
   }
 
-  setAdditional(additional) {
+  setAdditional(additional: any) {
     this.additional = additional;
     return this;
   }
