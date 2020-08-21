@@ -13,18 +13,18 @@ npm install --save react-entity-form
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import MyComponent from 'react-entity-form'
-import 'react-entity-form/dist/index.css'
+import MyComponent from 'react-entity-form';
+import 'react-entity-form/dist/index.css';
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <MyComponent />;
   }
 }
 ```
 
 ## License
 
-MIT © [chinmay17](https://github.com/chinmay17)
+MIT © [chicho17](https://github.com/chicho17)

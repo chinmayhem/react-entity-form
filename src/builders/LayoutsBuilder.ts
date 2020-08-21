@@ -1,4 +1,4 @@
-import { LayoutInterface } from './types';
+import { LayoutInterface } from '../types';
 
 class LayoutsBuilder {
   layoutsArr: LayoutInterface[] = [];

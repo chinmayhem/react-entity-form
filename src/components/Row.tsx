@@ -1,7 +1,7 @@
 import React, { useRef, useMemo } from 'react';
 import { makeMetaSelector } from './helper';
 
-import { RowInterface, ColumnInterface, Values, Errors, Fields, OnActionInterface } from '../builders/types';
+import { RowInterface, ColumnInterface, Values, Errors, Fields, OnActionInterface } from '../types';
 
 import s from '../styles.module.css';
 

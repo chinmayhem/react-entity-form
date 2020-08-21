@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { Layout } from './Layout';
 import { makeMetaSelector } from './helper';
 
-import { Errors, Fields, LayoutInterface, OnActionInterface, Values } from '../builders/types';
+import { Errors, Fields, LayoutInterface, OnActionInterface, Values } from '../types';
 
 export interface FormProps {
   values: Values;

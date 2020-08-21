@@ -3,7 +3,7 @@ import React, { useMemo, useRef } from 'react';
 import { Row } from './Row';
 import { makeMetaSelector } from './helper';
 
-import { RowInterface, Values, Errors, Fields, LayoutInterface, OnActionInterface } from '../builders/types';
+import { RowInterface, Values, Errors, Fields, LayoutInterface, OnActionInterface } from '../types';
 
 export interface LayoutProps {
   values: Values;

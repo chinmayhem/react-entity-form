@@ -1,4 +1,4 @@
-import { ColumnObjectInterface, RowInterface } from './types';
+import { ColumnObjectInterface, RowInterface } from '../types';
 
 function makeIdGenerator() {
   let id = 1;

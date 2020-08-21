@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import _property from 'lodash/property';
 import _pick from 'lodash/pick';
 
-import { Fields, Values, Errors } from '../builders/types';
+import { Fields, Values, Errors } from '../types';
 
 interface UnitItem {
   id: string;

@@ -1,4 +1,4 @@
-import { FieldComponentProps } from './types';
+import { FieldComponentProps } from '../types';
 
 function Null() {
   return null;
