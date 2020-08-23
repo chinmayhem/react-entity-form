@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/react-entity-form/static/css/main.13445d9c.chunk.css",
-    "main.js": "/react-entity-form/static/js/main.f439dce5.chunk.js",
-    "main.js.map": "/react-entity-form/static/js/main.f439dce5.chunk.js.map",
+    "main.js": "/react-entity-form/static/js/main.26a36bd2.chunk.js",
+    "main.js.map": "/react-entity-form/static/js/main.26a36bd2.chunk.js.map",
     "runtime-main.js": "/react-entity-form/static/js/runtime-main.93826aab.js",
     "runtime-main.js.map": "/react-entity-form/static/js/runtime-main.93826aab.js.map",
-    "static/js/2.7154db44.chunk.js": "/react-entity-form/static/js/2.7154db44.chunk.js",
-    "static/js/2.7154db44.chunk.js.map": "/react-entity-form/static/js/2.7154db44.chunk.js.map",
+    "static/js/2.8ccec5a4.chunk.js": "/react-entity-form/static/js/2.8ccec5a4.chunk.js",
+    "static/js/2.8ccec5a4.chunk.js.map": "/react-entity-form/static/js/2.8ccec5a4.chunk.js.map",
     "index.html": "/react-entity-form/index.html",
-    "precache-manifest.37ff53064b5710d8d35338d03abf2572.js": "/react-entity-form/precache-manifest.37ff53064b5710d8d35338d03abf2572.js",
+    "precache-manifest.b2714be530e819e5337e368f957b0d3f.js": "/react-entity-form/precache-manifest.b2714be530e819e5337e368f957b0d3f.js",
     "service-worker.js": "/react-entity-form/service-worker.js",
     "static/css/main.13445d9c.chunk.css.map": "/react-entity-form/static/css/main.13445d9c.chunk.css.map",
-    "static/js/2.7154db44.chunk.js.LICENSE.txt": "/react-entity-form/static/js/2.7154db44.chunk.js.LICENSE.txt"
+    "static/js/2.8ccec5a4.chunk.js.LICENSE.txt": "/react-entity-form/static/js/2.8ccec5a4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.93826aab.js",
-    "static/js/2.7154db44.chunk.js",
+    "static/js/2.8ccec5a4.chunk.js",
     "static/css/main.13445d9c.chunk.css",
-    "static/js/main.f439dce5.chunk.js"
+    "static/js/main.26a36bd2.chunk.js"
   ]
 }
