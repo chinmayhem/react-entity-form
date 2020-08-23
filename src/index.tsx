@@ -9,4 +9,7 @@ export { FieldBuilder } from './builders/FieldBuilder';
 export { OnActionInterface, Fields, LayoutInterface } from './types';
 
 export { Form } from './components/Form';
+
+export { useForm } from './hooks/useForm';
+export { useFormField } from './hooks/useFormField';
 export { actionTypes };

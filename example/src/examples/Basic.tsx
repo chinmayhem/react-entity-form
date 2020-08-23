@@ -10,6 +10,8 @@ import {
   Fields,
   LayoutInterface,
   Form,
+  useForm,
+  useFormField,
 } from 'react-entity-form';
 
 interface TextInputProps<F> {
@@ -22,25 +24,21 @@ interface TextInputProps<F> {
 }
 
 const TextInput = <F extends string>({ value = '', onAction, className, fieldId, label }: TextInputProps<F>) => {
+  const [ref, onBlur, onValueChange] = useFormField(fieldId, onAction);
   const onChange = useCallback(
     (e) => {
-      onAction({
-        type: '@@form/change',
-        payload: {
-          fieldId,
-          value: e.target.value,
-        },
-      });
+      onValueChange(e.target.value);
     },
-    [onAction, fieldId]
+    [onValueChange]
   );
 
   return (
-    <div className={`${className || ''} flex flex-col`}>
+    <div className={`${className || ''} flex flex-col`} ref={ref}>
       <label className="block flex-none" htmlFor={fieldId}>
         {label}
       </label>
       <input
+        onBlur={onBlur}
         id={fieldId}
         placeholder={label}
         className="w-full block flex-1"
@@ -68,25 +66,21 @@ function TextAreaInput<F extends string>({
   fieldId,
   label,
 }: TextAreaInputProps<F>): React.ReactElement {
+  const [ref, onBlur, onValueChange] = useFormField(fieldId, onAction);
   const onChange = useCallback(
     (e) => {
-      onAction({
-        type: '@@form/change',
-        payload: {
-          fieldId,
-          value: e.target.value,
-        },
-      });
+      onValueChange(e.target.value);
     },
-    [onAction, fieldId]
+    [onValueChange]
   );
 
   return (
-    <div className={`${className || ''} flex flex-col`}>
+    <div ref={ref} className={`${className || ''} flex flex-col`}>
       <label className="block flex-none" htmlFor={fieldId}>
         {label}
       </label>
       <textarea
+        onBlur={onBlur}
         id={fieldId}
         placeholder={label}
         className="w-full block flex-1"
@@ -170,18 +164,13 @@ const LAYOUTS: LayoutInterface[] = new LayoutsBuilder()
   .build();
 
 const BasicForm = () => {
-  const [values, setValues] = React.useState({});
-  const errors = {};
-  const onAction = React.useCallback(
-    (action) => {
-      setValues((prev) => ({
-        ...prev,
-        [action.payload.fieldId]: action.payload.value,
-      }));
-    },
-    [setValues]
-  );
-  return <Form fields={FIELDS} layouts={LAYOUTS} values={values} errors={errors} onAction={onAction} />;
+  // @ts-ignore
+  const { handleAction, errors, values, touched } = useForm({
+    initialErrors: {},
+    initialValues: {},
+  });
+  console.log(touched);
+  return <Form fields={FIELDS} layouts={LAYOUTS} values={values} errors={errors} onAction={handleAction} />;
 };
 
 export { BasicForm };
