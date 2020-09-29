@@ -169,7 +169,7 @@ const BasicForm = () => {
     initialErrors: {},
     initialValues: {},
   });
-  console.log(touched);
+
   return <Form fields={FIELDS} layouts={LAYOUTS} values={values} errors={errors} onAction={handleAction} />;
 };
 
