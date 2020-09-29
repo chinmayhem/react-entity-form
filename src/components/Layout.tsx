@@ -11,16 +11,25 @@ export interface LayoutProps {
   fields: Fields;
   layout: LayoutInterface;
   onAction: OnActionInterface<any, string>;
+  componentOverrides?: {
+    Root?: any;
+    Layout?: any;
+    Row?: any;
+  };
 }
 
-const Layout = ({ values, errors, fields, layout, onAction }: LayoutProps) => {
+const DefaultLayout = ({ children }) => <React.Fragment>{children}</React.Fragment>;
+
+const Layout = ({ values, errors, fields, layout, onAction, componentOverrides }: LayoutProps) => {
   const getMetaSelector = useRef(makeMetaSelector('columns'));
   const rowToGetters = useMemo(() => {
     return getMetaSelector.current(layout.rows);
   }, [layout.rows]);
 
+  const Root = componentOverrides?.Layout || DefaultLayout;
+
   return (
-    <React.Fragment>
+    <Root values={values} errors={errors} fields={fields} layout={layout} onAction={onAction}>
       {layout.rows.map((row: RowInterface) => {
         const rowId = typeof row === 'string' ? row : row.id;
         return (
@@ -31,10 +40,11 @@ const Layout = ({ values, errors, fields, layout, onAction }: LayoutProps) => {
             values={rowToGetters[rowId].valuesGetter(values)}
             errors={rowToGetters[rowId].errorsGetter(errors)}
             onAction={onAction}
+            componentOverrides={componentOverrides}
           />
         );
       })}
-    </React.Fragment>
+    </Root>
   );
 };
 

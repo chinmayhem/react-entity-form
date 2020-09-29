@@ -11,9 +11,16 @@ export interface FormProps {
   fields: Fields;
   layouts: LayoutInterface[];
   onAction: OnActionInterface<any, string>;
+  componentOverrides?: {
+    Root?: any;
+    Layout?: any;
+    Row?: any;
+  };
 }
 
-const Form = ({ values, errors, fields, layouts, onAction }: FormProps) => {
+const DefaultRoot = ({ onSubmit, children }) => <form onSubmit={onSubmit}>{children}</form>;
+
+const Form = ({ values, errors, fields, layouts, onAction, componentOverrides }: FormProps) => {
   const handleSubmission = useCallback((e) => {
     e.preventDefault();
   }, []);
@@ -23,8 +30,10 @@ const Form = ({ values, errors, fields, layouts, onAction }: FormProps) => {
     return getMetaSelector.current(layouts);
   }, [layouts]);
 
+  const Root = componentOverrides?.Root || DefaultRoot;
+
   return (
-    <form onSubmit={handleSubmission}>
+    <Root onSubmit={handleSubmission}>
       {layouts.map((layout) => (
         <Layout
           key={layout.id}
@@ -33,9 +42,10 @@ const Form = ({ values, errors, fields, layouts, onAction }: FormProps) => {
           values={layoutToGetters[layout.id].valuesGetter(values)}
           errors={layoutToGetters[layout.id].errorsGetter(errors)}
           onAction={onAction}
+          componentOverrides={componentOverrides}
         />
       ))}
-    </form>
+    </Root>
   );
 };
 

@@ -13,9 +13,25 @@ export interface RowProps {
   onAction: OnActionInterface<any, string>;
   className?: string;
   unitKey?: 'columns' | 'rows';
+  componentOverrides?: {
+    Root?: any;
+    Layout?: any;
+    Row?: any;
+  };
 }
 
-const Row = ({ values, errors, fields, row, onAction, className = '', unitKey = 'columns' }: RowProps) => {
+const DefaultRow = ({ className, children }) => <div className={className}>{children}</div>;
+
+const Row = ({
+  values,
+  errors,
+  fields,
+  row,
+  onAction,
+  className = '',
+  unitKey = 'columns',
+  componentOverrides,
+}: RowProps) => {
   const getMetaSelector = useRef(makeMetaSelector(unitKey === 'columns' ? 'rows' : 'columns'));
   const unit = row[unitKey];
   const columnToGetters = useMemo(() => {
@@ -44,8 +60,18 @@ const Row = ({ values, errors, fields, row, onAction, className = '', unitKey = 
     );
   }
 
+  const Root = componentOverrides?.Row || DefaultRow;
+
   return (
-    <div className={`${s.flex} ${unitKey === 'columns' ? s.flexRow : s.flexCol} ${className || ''}`}>
+    <Root
+      className={`${s.flex} ${unitKey === 'columns' ? s.flexRow : s.flexCol} ${className || ''}`}
+      unitKey={unitKey}
+      values={values}
+      errors={errors}
+      fields={fields}
+      onAction={onAction}
+      row={row}
+    >
       {unit.map((col: ColumnInterface | RowInterface) => {
         const colId = typeof col === 'string' ? col : col.id;
         return (
@@ -58,10 +84,11 @@ const Row = ({ values, errors, fields, row, onAction, className = '', unitKey = 
             unitKey={unitKey === 'rows' ? 'columns' : 'rows'}
             onAction={onAction}
             className={s.flex1}
+            componentOverrides={componentOverrides}
           />
         );
       })}
-    </div>
+    </Root>
   );
 };
 
