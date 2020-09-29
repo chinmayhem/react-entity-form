@@ -7,28 +7,28 @@ const useFormField = (fieldId, onAction) => {
   fieldIdRef.current = fieldId;
   onActionRef.current = onAction;
 
-  const handleChange = useCallback((value) => {
+  const onChange = useCallback((value) => {
     onActionRef.current({
       type: FORM_CHANGE_ACTION,
       payload: { fieldId: fieldIdRef.current, value },
     });
   }, []);
 
-  const handleBlur = useCallback(() => {
+  const onBlur = useCallback(() => {
     onActionRef.current({
       type: MARK_FORM_FIELD_TOUCHED_ACTION,
       payload: { fieldId: fieldIdRef.current },
     });
   }, []);
 
-  const registerFieldEl = useCallback((el) => {
+  const ref = useCallback((el) => {
     onActionRef.current({
       type: REGISTER_FORM_FIELD_ACTION,
       payload: { fieldId: fieldIdRef.current, el },
     });
   }, []);
 
-  return [registerFieldEl, handleBlur, handleChange];
+  return [ref, onBlur, onChange];
 };
 
 export { useFormField };
